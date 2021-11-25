@@ -14,6 +14,8 @@ app.use(bodyparser.json());
 app.get('/', (req,res)=> { //get method
   res.send('Hello World') //send response
 })
+
+
 app.get('/users', (req,res)=> { //get method
 db.query('SELECT * FROM Users',(err,rows,fields)=>{
   if(!err) console.log(rows)
