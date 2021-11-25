@@ -1,0 +1,23 @@
+{
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "name": "server-side-1",
+  "description": "",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "start": "nodemon server-side-1/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MohamedAmineYousfi/Server-side-1.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MohamedAmineYousfi/Server-side-1/issues"
+  },
+  "homepage": "https://github.com/MohamedAmineYousfi/Server-side-1#readme"
+}
