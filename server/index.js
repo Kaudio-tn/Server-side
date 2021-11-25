@@ -16,15 +16,7 @@ app.get('/', (req,res)=> { //get method
 
 
 app.get('/users', (req,res)=> { //get method
-  db.connection.query('SELECT * FROM users',(error,results,fields)=>{
-  if(error){
-    res.send(JSON.stringify({"status": 500, "error": error, "response": null}));
-    //If there is error, we send the error in the error section with 500 status
-} else {
-    res.send(JSON.stringify({"status": 200, "error": null, "response": results}));
-    //If there is no error, all is good and response is 200OK.
-}
-})
+  db.getAllUsers(req,res)
 })
 
 app.listen(PORT,console.log(`Express is running on ${PORT}`))
