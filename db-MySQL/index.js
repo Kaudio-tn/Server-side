@@ -1,7 +1,13 @@
 const mysql = require("mysql");
 const mysqlConfig = require("./config.js");
 
-const connection = mysql.createConnection(mysqlConfig);
+var connection = mysql.createConnection(mysqlConfig);
+ connection.connect((err)=> {
+    if(!err)
+    console.log('Connection DB Established Successfully');
+    else
+    console.log('Connection DB Failed!'+ JSON.stringify(err,undefined,2));
+    });
 
 // const findAndUpdate = function () {};
 
@@ -22,12 +28,13 @@ const connection = mysql.createConnection(mysqlConfig);
 //     create,
 // };
 
+const getAllUsers = function(callback) {
+    let syn =`select * from users`
+    connection.query(syn,(err,result)=>{
+      return  err ? callback(err,null) : callback(null,result)
+    })
+};
 
-const db = connection.connect((err)=> {
-    if(!err)
-    console.log('Connection DB Established Successfully');
-    else
-    console.log('Connection DB Failed!'+ JSON.stringify(err,undefined,2));
-    });
-    
-module.exports = db;
+module.exports={connection:connection,getAllUsers : getAllUsers};
+
+

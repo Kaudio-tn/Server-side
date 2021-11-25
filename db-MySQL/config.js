@@ -2,6 +2,7 @@ module.exports ={
     host: 'localhost',
     user: 'root',
     password: 'password',
-    database: 'k-audio'
+    database: 'kaudio',
+    multipleStatements: true
     };
 
