@@ -1,11 +1,20 @@
 const express = require('express')
 const bodyparser = require('body-parser');
 var app = express()
-const PORT = 3000;
+const PORT = 5000;
 const db = require('../db-MySQL/index.js');
-
+const cors = require("cors");
 
 app.use(bodyparser.json());
+var corsOptions = {
+  origin: "http://localhost:3000"
+};
+app.use(cors(corsOptions));
+// parse requests of content-type - application/json
+app.use(express.json());
+
+// parse requests of content-type - application/x-www-form-urlencoded
+app.use(express.urlencoded({ extended: true }));
 
 
 
