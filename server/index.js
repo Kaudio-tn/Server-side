@@ -30,4 +30,5 @@ app.post('/users',   (req,res)=>{
   db.createUser(req,res)
 })
 
+require("./routes/casque.routes.js")(app);
 app.listen(PORT,console.log(`Express is running on http://localhost:${PORT}`))
