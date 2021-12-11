@@ -1,7 +1,7 @@
-const Casque = require("../../db-MySQL/models/casque.model.js");
+const Mixage = require("../../db-MySQL/models/mixage.model.js");
 
-console.log(Casque)
-// Create and Save a new Casque
+console.log(mixage)
+// Create and Save a new Mixage
 exports.create = (req, res) => {
   // Validate request
   if (!req.body) {
@@ -9,8 +9,8 @@ exports.create = (req, res) => {
       message: "Content can not be empty!"
     });
 };
- // Create a Casque
- const casque = new Casque({
+ // Create a Mixage
+ const mixage = new Mixage({
     name: req.body.name,
     description: req.body.description,
     isavailable: req.body.isavailable || false,
@@ -18,8 +18,8 @@ exports.create = (req, res) => {
     price : req.body.price,
     imgurl : req.body.imgurl
   });
-// Save Casque in the database
-Casque.create(casque, (err, data) => {
+// Save Mixage in the database
+Mixage.create(casque, (err, data) => {
     if (err)
       res.status(500).send({
         message:
@@ -31,7 +31,7 @@ Casque.create(casque, (err, data) => {
 
 
 
-// Retrieve all Casques from the database (with condition).
+// Retrieve all Mixages from the database (with condition).
 exports.findAll = (req, res) => {
     const name = req.query.name;
 
@@ -46,15 +46,15 @@ exports.findAll = (req, res) => {
 };
 
 exports.findOne = (req, res) => {
-    Casque.findById(req.params.id, (err, data) => {
+    Mixage.findById(req.params.id, (err, data) => {
       if (err) {
         if (err.kind === "not_found") {
           res.status(404).send({
-            message: `Not found Casque with id ${req.params.id}.`
+            message: `Not found Mixage with id ${req.params.id}.`
           });
         } else {
           res.status(500).send({
-            message: "Error retrieving Casque with id " + req.params.id
+            message: "Error retrieving Mixage with id " + req.params.id
           });
         }
       } else res.send(data);
@@ -73,9 +73,9 @@ exports.findOne = (req, res) => {
   
     console.log(req.body);
   
-    Casque.updateById(
+    Mixage.updateById(
       req.params.id,
-      new Casque(req.body),
+      new Mixage(req.body),
       (err, data) => {
         if (err) {
           if (err.kind === "not_found") {
@@ -93,33 +93,33 @@ exports.findOne = (req, res) => {
   };
 
   
-  //Delete a Casque with the specified id in the request:
+  //Delete a Mixage with the specified id in the request:
 
 exports.delete = (req, res) => {
-  Casque.remove(req.params.id, (err, data) => {
+  Mixage.remove(req.params.id, (err, data) => {
     if (err) {
       if (err.kind === "not_found") {
         res.status(404).send({
-          message: `Not found Casque with id ${req.params.id}.`
+          message: `Not found Mixage with id ${req.params.id}.`
         });
       } else {
         res.status(500).send({
-          message: "Could not delete Casque with id " + req.params.id
+          message: "Could not delete Mixage with id " + req.params.id
         });
       }
-    } else res.send({ message: `Casque was deleted successfully!` });
+    } else res.send({ message: `Mixage was deleted successfully!` });
   });
 };
 
-//Delete all Casques from the database:
+//Delete all Mixages from the database:
 
 exports.deleteAll = (req, res) => {
-  Casque.removeAll((err, data) => {
+  Mixage.removeAll((err, data) => {
     if (err)
       res.status(500).send({
         message:
-          err.message || "Some error occurred while removing all casques."
+          err.message || "Some error occurred while removing all mixages."
       });
-    else res.send({ message: `All Casques were deleted successfully!` });
+    else res.send({ message: `All Mixages were deleted successfully!` });
   });
 };
